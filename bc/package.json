@@ -1,0 +1,44 @@
+{
+  "name": "muy-rico-cr-bussines-card",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "DEPLOY=false next build",
+    "start": "DEPLOY=false next start",
+    "start_deploy": "DEPLOY=true next start",
+    "lint": "next lint",
+    "g": "plop",
+    "postinstall": "husky install",
+    "deploy": "DEPLOY=true next build",
+    "deploypack": "DEPLOY=true next build && tar -cvzf ./muyrico_bc_$(date +\"%Y%m%d\").tar.gz -C . .next node_modules public package.json next.config.js",
+    "pp": "npx prettier src/ --check --parser=\"typescript\" --ignore-path=.prettierignore",
+    "ppf": "npx prettier --write --parser=\"typescript\""
+  },
+  "dependencies": {
+    "@next/third-parties": "^15.0.3",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^9.13.0",
+    "eslint-config-next": "^15.0.1",
+    "next": "^14.0.4",
+    "next-intl": "^3.25.0",
+    "polished": "^4.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "sharp": "^0.33.3",
+    "styled-components": "^6.1.13",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "inquirer-fuzzy-path": "^2.3.0",
+    "plop": "^3.1.2",
+    "prettier": "^3.3.3",
+    "prettier-plugin-sort-react-imports": "^0.5.0"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  }
+}

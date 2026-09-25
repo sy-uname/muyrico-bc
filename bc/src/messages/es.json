@@ -1,0 +1,42 @@
+{
+  "Redirect": {
+    "metadata": {
+      "title": "Servicio de reparación de autos y motos en Alajuela, San Antonio | EVK TALLER GRUPO ",
+      "description": "Bienvenido a la página de servicios de nuestro taller en Alajuela, San Antonio. Ofrecemos reparaciones rápidas y generales para automóviles y motocicletas. Confía en nuestros expertos para mantener tu vehículo en perfectas condiciones."
+    },
+    "page": {
+      "main-page": "Volver a la página principal"
+    }
+  },
+  "Home": {
+    "metadata": {
+      "title": "Servicio de reparación de autos y motos en Alajuela, San Antonio | EVK TALLER GRUPO ",
+      "description": "Bienvenido a la página de servicios de nuestro taller en Alajuela, San Antonio. Ofrecemos reparaciones rápidas y generales para automóviles y motocicletas. Confía en nuestros expertos para mantener tu vehículo en perfectas condiciones."
+    },
+    "promo": {
+      "title": "oferta",
+      "text": "Diagnóstico completo de la suspensión y diagnóstico computarizado de su vehículo con recomendaciones detalladas del mecánico por solo:",
+      "action-button": "conocer más",
+      "action-link-text": "Hola, me gustaría saber más sobre la promoción de diagnóstico del carro!"
+    },
+    "location-contacts": {
+      "title": "ubicación y contactos",
+      "phone": "Telefono"
+    },
+    "information": {
+      "title": "información",
+      "about-us": "Sobre Nosotros",
+      "prices-and-services": "Servicios y Precios"
+    },
+    "social-networks": {
+      "title": "redes sociales"
+    }
+  },
+  "Countdown": {
+    "title": "Se acabará en",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos"
+  }
+}
