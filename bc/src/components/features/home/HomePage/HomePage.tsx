@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 import { Countdown, ResponsiveImage } from '@core'
 import { numberFormat } from '@helpers'
+import { getBlEnv } from '@helpers'
 import { LocaleSwitcher } from '@shared'
 import aboutUs from '@assets/about-us.webp'
 import facebook from '@assets/facebook.webp'
@@ -38,16 +39,17 @@ import {
 export const HomePage = () => {
   const t = useTranslations('Home')
 
+  const isPromocionActive = getBlEnv("promocionActive")
   const [promoEndDate, setPromoEndDate] = useState(new Date(Date.now() + 5000))
-  const [promocionActive, setPromocionActive] = useState(true)
+  const [promocionActive, setPromocionActive] = useState(isPromocionActive)
 
   const webSiteLink = process.env.webSiteLink as string
   const aboutUsLink = webSiteLink + '/about-us'
   const pricesLink = webSiteLink + '/services-and-prices'
   const wazeLink =
-    'https://ul.waze.com/ul?place=ChIJGzjRuNr5oI8ROcT1KYKOP9g&ll=9.99545220%2C-84.21709090&navigate=yes'
-  const googleMapsLink = 'https://maps.app.goo.gl/MaMwwPhKuj2DkPxY7'
-  const phoneMain = '50664525281'
+    'https://ul.waze.com/ul?ll=9.92989795%2C-84.21623279&navigate=yes&zoom=17&utm_campaign=default&utm_medium=lm_share_location'
+  const googleMapsLink = 'https://maps.app.goo.gl/r48sU6MwMVwKMtRHA'
+  const phoneMain = '50670127582'
   const phoneLink = `tel:+${phoneMain}`
   const whatsappLink = `https://wa.me/${phoneMain}`
   const ourName = process.env.ourName as string

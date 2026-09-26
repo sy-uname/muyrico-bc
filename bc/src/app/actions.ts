@@ -1,7 +1,7 @@
 'use server'
 
 const getServerDBURL = () => {
-  const url = 'http://localhost:3006/scan'
+  const url = 'http://localhost:3016/scan'
   return url
 }
 

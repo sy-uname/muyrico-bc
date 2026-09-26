@@ -60,7 +60,7 @@ export default function NotFound() {
     <html lang={routing.defaultLocale}>
       <body>
         <NotFoundPageContainer>
-          <title>No Encontrado | EVK TALLER GRUPO</title>
+          <title>No Encontrado | MUY RICO GRUPO</title>
           <NotFoundTitle>{404}</NotFoundTitle>
           <NotFoundDescription>la página no fue encontrada</NotFoundDescription>
           <OfferActionButton href="/">Volver a la página principal</OfferActionButton>

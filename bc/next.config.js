@@ -9,12 +9,12 @@ const baseDomain = !isDev ? 'muyricocr.com' : 'webserver.local';
 const baseProtocol = !isDev ? 'https' : 'http';
 
 const mainSite = !isDev ? 'www.' : '';
-const mainSrvPath = !isDev ? '' : '/muyrico';
+const mainSrvPath = !isDev ? '' : '/mrbc';
 const mainURL = mainSite + baseDomain;
 const webSiteLink = baseProtocol + '://' + mainURL + mainSrvPath ;
 
 const baseSite = !isDev ? 'bc.' : '';
-const baseSrvPath = !isDev ? '' : '/muyricobc';
+const baseSrvPath = !isDev ? '' : '/mrbc';
 const baseURL = baseSite + baseDomain;
 const baseFullURL = baseProtocol + '://' + baseURL + baseSrvPath ;
 
@@ -22,12 +22,13 @@ const nextConfig = {
   basePath: baseSrvPath,
   skipTrailingSlashRedirect: true,  // вместо trailingSlash: true
   env: {
+    promocionActive: "false",
     gtmId: !isDev ? 'GTM-TQ2WZFFW' : 'GTM-XXX',
     gaId: !isDev ? 'G-FMY13SC2L4' : 'G-TCQ8H0BX4G',
     hrefBaseUrl: baseFullURL,
     webSiteLink: webSiteLink,
     ourName: 'MUYRICOCR',
-    ourNameOut: 'Muy Rico CR',
+    ourNameOut: 'Muy Rico Grupo',
   },
   compiler: {
     styledComponents: true,
