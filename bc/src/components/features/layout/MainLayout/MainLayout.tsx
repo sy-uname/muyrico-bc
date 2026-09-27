@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { RootLayoutProps } from '@types'
 import StyledComponentsRegistry from '@lib/registry'
 import { routing } from '@/i18n/routing'
-import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 import '@styles/globals.css'
 
@@ -18,13 +18,13 @@ export const MainLayout = ({ children, params: { locale } }: RootLayoutProps) =>
 
   return (
     <html lang={locale}>
-        <GoogleTagManager gtmId={process.env.gtmId || ''} />
       <body>
         <NextIntlClientProvider messages={messages}>
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         </NextIntlClientProvider>
+        {process.env.gtmId && <GoogleTagManager gtmId={process.env.gtmId || ''} />}
+        {process.env.gaId && <GoogleAnalytics gaId={process.env.gaId || ''} />}
       </body>
-      <GoogleAnalytics gaId={process.env.gaId || ''} />
     </html>
   )
 }
