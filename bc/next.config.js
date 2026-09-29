@@ -25,6 +25,7 @@ const nextConfig = {
     promocionActive: "false",
     gtmId: !isDev ? 'GTM-TQ2WZFFW' : 'GTM-XXX',
     gaId: !isDev ? 'G-FMY13SC2L4' : 'G-TCQ8H0BX4G',
+    baseSrvPath: baseSrvPath,
     hrefBaseUrl: baseFullURL,
     webSiteLink: webSiteLink,
     ourName: 'MUYRICOCR',

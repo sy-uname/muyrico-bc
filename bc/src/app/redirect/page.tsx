@@ -6,6 +6,7 @@ import { RedirectPage } from '@features'
 import { GenerateMetadataProps } from '@types'
 import { routing } from '@/i18n/routing'
 import { postData } from '@/app/actions'
+import { getCurrentOrigin } from '@helpers/getOrigin'
 
 type Props = {
   params: { slug: string }
@@ -16,6 +17,7 @@ export async function generateMetadata(props: GenerateMetadataProps) {
   const t = await getTranslations({ locale: routing.defaultLocale, namespace: 'Redirect' })
 
   return {
+    metadataBase: getCurrentOrigin(),
     title: t('metadata.title'),
     description: t('metadata.description'),
   }

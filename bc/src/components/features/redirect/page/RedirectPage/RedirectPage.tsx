@@ -25,7 +25,7 @@ export const RedirectPage = () => {
     <RedirectPageContainer>
       <RedirectPageTitle>QR Code Scan</RedirectPageTitle>
       <RedirectPageDescription>
-        Bienvenido a la página de servicios de nuestro taller en Alajuela, San Antonio.
+        Bienvenido a la página de servicios de nuestro punto vienta en Piedades, Santa Ana.
       </RedirectPageDescription>
       <OfferActionButton href="/">Volver a la página principal</OfferActionButton>
     </RedirectPageContainer>
