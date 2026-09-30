@@ -1,5 +1,5 @@
+export const dynamic = 'force-dynamic'
 import { getTranslations } from 'next-intl/server'
-import { headers } from 'next/headers'
 
 import { HomePage } from '@features'
 import { GenerateMetadataProps } from '@types'
@@ -7,7 +7,7 @@ import { getCurrentOrigin } from '@helpers/getOrigin'
 
 export async function generateMetadata({ params: { locale } }: GenerateMetadataProps) {
   const t = await getTranslations({ locale, namespace: 'Home' })
-const basePath = process.env.baseSrvPath ?? ''
+  const basePath = process.env.baseSrvPath ?? ''
   return {
     metadataBase: getCurrentOrigin(),
     alternates: {

@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { Suspense } from 'react'
 import { headers } from 'next/headers'
 import { getTranslations } from 'next-intl/server'
