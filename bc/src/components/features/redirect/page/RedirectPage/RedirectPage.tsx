@@ -5,12 +5,17 @@ import { useTranslations } from 'next-intl'
 import { redirect } from 'next/navigation'
 import { useRouter, useSearchParams } from 'next/navigation'
 
+import logo from '@assets/logo.png'
+import { ResponsiveImage } from '@core/ResponsiveImage'
 import {
-  OfferActionButton,
-  RedirectPageTitle,
-  RedirectPageContainer,
-  RedirectPageDescription,
-} from './RedirectPage.elements'
+  PageShell,
+  GlassPanel,
+  LogoContainer,
+  SectionHeading,
+  MessageDescription,
+} from '@shared/BusinessCard/BusinessCard.elements'
+
+import { OfferActionButton } from './RedirectPage.elements'
 import { RedirectPageProps } from './RedirectPage.types'
 
 export const RedirectPage = () => {
@@ -22,12 +27,17 @@ export const RedirectPage = () => {
   }, [router])
 
   return (
-    <RedirectPageContainer>
-      <RedirectPageTitle>QR Code Scan</RedirectPageTitle>
-      <RedirectPageDescription>
-        Bienvenido a la página de servicios de nuestro punto vienta en Piedades, Santa Ana.
-      </RedirectPageDescription>
-      <OfferActionButton href="/">Volver a la página principal</OfferActionButton>
-    </RedirectPageContainer>
+    <PageShell>
+      <LogoContainer>
+        <ResponsiveImage src={logo.src} />
+      </LogoContainer>
+      <GlassPanel>
+        <SectionHeading as="h1">QR Code Scan</SectionHeading>
+        <MessageDescription>
+          Bienvenido a la página de servicios de nuestro punto vienta en Piedades, Santa Ana.
+        </MessageDescription>
+        <OfferActionButton href="/">Volver a la página principal</OfferActionButton>
+      </GlassPanel>
+    </PageShell>
   )
 }
