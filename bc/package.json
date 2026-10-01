@@ -1,17 +1,16 @@
 {
   "name": "muy-rico-cr-bussines-card",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "DEPLOY=false next build",
-    "start": "DEPLOY=false next start",
-    "start_deploy": "DEPLOY=true next start",
+    "build": "DEPLOY=false next build && cp -a public/. .next/standalone/public/ && cp -a .next/static/. .next/standalone/.next/static/",
+    "deploy": "DEPLOY=true next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
+    "deploypack": "DEPLOY=true next build && rm -rf .next/standalone/public .next/standalone/.next/static && mkdir -p .next/standalone/public .next/standalone/.next/static && cp -a public/. .next/standalone/public/ && cp -a .next/static/. .next/standalone/.next/static/ && tar -czf ./muyrico_bc_$(date +\"%Y%m%d\").tar.gz -C .next/standalone .",
+    "start": "PORT=3014 DEPLOY=false node .next/standalone/server.js",
+    "start_deploy": "PORT=3014 DEPLOY=true node .next/standalone/server.js",
     "lint": "next lint",
     "g": "plop",
-    "postinstall": "husky install",
-    "deploy": "DEPLOY=true next build",
-    "deploypack": "DEPLOY=true next build && tar -cvzf ./muyrico_bc_$(date +\"%Y%m%d\").tar.gz -C . .next node_modules public package.json next.config.js",
     "pp": "npx prettier src/ --check --parser=\"typescript\" --ignore-path=.prettierignore",
     "ppf": "npx prettier --write --parser=\"typescript\""
   },

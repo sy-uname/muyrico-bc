@@ -19,6 +19,7 @@ const baseURL = baseSite + baseDomain;
 const baseFullURL = baseProtocol + '://' + baseURL + baseSrvPath ;
 
 const nextConfig = {
+  ...(isDev ? { output: 'standalone' } : { output: 'standalone' }),
   basePath: baseSrvPath,
   skipTrailingSlashRedirect: true,  // вместо trailingSlash: true
   env: {
