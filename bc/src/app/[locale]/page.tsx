@@ -6,7 +6,8 @@ import { GenerateMetadataProps } from '@types'
 import { getCurrentOrigin } from '@helpers/getOrigin'
 import { routing } from '@/i18n/routing'
 
-export async function generateMetadata({ params: { locale } }: GenerateMetadataProps) {
+export async function generateMetadata({ params }: GenerateMetadataProps) {
+  const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Home' })
   const basePath = process.env.baseSrvPath ?? ''
   return {

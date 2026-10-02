@@ -1,17 +1,17 @@
 import { setRequestLocale } from 'next-intl/server'
 
 import { MainLayout } from '@features'
-import { RootLayoutProps } from '@types'
+import { LocaleLayoutProps } from '@types'
 import { routing } from '@/i18n/routing'
 
-export default async function RootLayout({ children, params }: RootLayoutProps) {
+export default async function RootLayout({ children, params }: LocaleLayoutProps) {
 
-  const resolvedParams = await params
+  const { locale } = await params
 
-  setRequestLocale(resolvedParams.locale)
+  setRequestLocale(locale)
 
   return (
-      <MainLayout params={resolvedParams}>{children}</MainLayout>
+      <MainLayout locale={locale}>{children}</MainLayout>
   )
 }
 

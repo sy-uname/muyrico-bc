@@ -1,8 +1,5 @@
-import { ReactNode, HTMLAttributeAnchorTarget } from 'react'
-import { LinkProps as NextLinkProps } from 'next/link'
+import { ComponentProps } from 'react'
 
-export type LinkProps = {
-  children: ReactNode
-  locale?: string
-  target?: HTMLAttributeAnchorTarget
-} & NextLinkProps
+import { Link as NextLink } from '@/i18n/routing'
+
+export type LinkProps = ComponentProps<typeof NextLink>

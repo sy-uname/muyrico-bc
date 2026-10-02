@@ -9,7 +9,7 @@ import { postData } from '@/app/actions'
 import { getCurrentOrigin } from '@helpers/getOrigin'
 
 type Props = {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 export async function generateMetadata() {
