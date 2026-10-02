@@ -5,10 +5,13 @@ import { RootLayoutProps } from '@types'
 import { routing } from '@/i18n/routing'
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
-  setRequestLocale(params.locale)
+
+  const resolvedParams = await params
+
+  setRequestLocale(resolvedParams.locale)
 
   return (
-      <MainLayout params={params}>{children}</MainLayout>
+      <MainLayout params={resolvedParams}>{children}</MainLayout>
   )
 }
 

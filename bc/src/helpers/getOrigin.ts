@@ -1,8 +1,8 @@
 import 'server-only'
 import { headers } from 'next/headers'
 
-export function getCurrentOrigin(): URL {
-  const h = headers()
+export async function getCurrentOrigin(): Promise<URL> {
+  const h = await headers()
 
   const host =
     h.get('x-forwarded-host') ??

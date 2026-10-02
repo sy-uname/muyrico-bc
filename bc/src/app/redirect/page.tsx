@@ -4,30 +4,29 @@ import { headers } from 'next/headers'
 import { getTranslations } from 'next-intl/server'
 
 import { RedirectPage } from '@features'
-import { GenerateMetadataProps } from '@types'
 import { routing } from '@/i18n/routing'
 import { postData } from '@/app/actions'
 import { getCurrentOrigin } from '@helpers/getOrigin'
 
 type Props = {
-  params: { slug: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export async function generateMetadata(props: GenerateMetadataProps) {
+export async function generateMetadata() {
   const t = await getTranslations({ locale: routing.defaultLocale, namespace: 'Redirect' })
 
   return {
-    metadataBase: getCurrentOrigin(),
+    metadataBase: await getCurrentOrigin(),
     title: t('metadata.title'),
     description: t('metadata.description'),
   }
 }
 
 export default async function Page({ searchParams }: Props) {
-  const raw = searchParams.source
+  const resolvedSearchParams = await searchParams
+  const raw = resolvedSearchParams.source
   const source = Array.isArray(raw) ? raw[0] : raw || ''
-  const userAgent = headers().get('user-agent') || 'unknown'
+  const userAgent = (await headers()).get('user-agent') || 'unknown'
 
   await postData({ source, userAgent })
 

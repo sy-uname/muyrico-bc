@@ -10,7 +10,7 @@ export async function generateMetadata({ params: { locale } }: GenerateMetadataP
   const t = await getTranslations({ locale, namespace: 'Home' })
   const basePath = process.env.baseSrvPath ?? ''
   return {
-    metadataBase: getCurrentOrigin(),
+    metadataBase: await getCurrentOrigin(),
     alternates: {
       canonical: `${basePath}/${locale === routing.defaultLocale ? '' : locale}`,
     },
