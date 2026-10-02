@@ -26,16 +26,35 @@ const getDeviceType = (userAgent: string) => {
   }
 }
 
+const getAllowedScanSources = (): Set<string> => {
+  const sources = process.env.SCAN_SOURCES ?? ''
+
+  return new Set(
+    sources
+      .split(',')
+      .map((source) => source.trim().toLowerCase())
+      .filter(Boolean),
+  )
+}
+
 export type PostDataContext = { source: string; userAgent: string }
 
 export async function postData(context: PostDataContext): Promise<unknown> {
   if (!context.source || context.source == 'default') {
-    console.info('Scan tracking', { outcome: 'skipped', reason: 'empty_or_default_source' })
+    console.warn('Scan tracking', { outcome: 'skipped', reason: 'empty_or_default_source' })
+    return null
+  }
+
+  const source = context.source.trim().toLowerCase()
+  const configuredSources = getAllowedScanSources()
+
+  if (!configuredSources.has(source)) {
+    console.warn('Scan tracking', { outcome: 'skipped', reason: 'unknown_source', source })
     return null
   }
 
   const data = {
-    source: context.source || 'Common',
+    source,
     device: getDeviceType(context.userAgent || 'unknown'),
   }
 

@@ -22,7 +22,9 @@ SCAN_BACKEND_URL=<full_url>
 
 # Request timeout in milliseconds
 SCAN_REQUEST_TIMEOUT_MS=<timeout>
-```
+
+# Allowed QR sources separated by ,
+SCAN_SOURCES=```
 
 ### Variables
 
