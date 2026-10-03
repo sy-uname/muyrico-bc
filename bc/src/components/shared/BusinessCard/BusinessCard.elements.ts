@@ -80,7 +80,7 @@ export const actionLinkStyles = css`
   padding: 5px 15px;
   color: #fff;
   font-weight: 600;
-  background-color: #ed4c1a;
+  background-color: #d44417;
   border-radius: 4px;
   margin-top: 10px;
   transition: background-color 0.2s;
