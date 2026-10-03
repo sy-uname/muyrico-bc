@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic'
+
 import { getTranslations } from 'next-intl/server'
 
 import { HomePage } from '@features'

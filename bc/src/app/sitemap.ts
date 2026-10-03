@@ -1,32 +1,30 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 
+import { getCurrentOrigin } from '@helpers/getOrigin'
 import { routing } from '@/i18n/routing'
 
-const hrefBaseUrl = process.env.hrefBaseUrl as string
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const origin = (await getCurrentOrigin()).origin
+  const basePath = process.env.baseSrvPath ?? ''
+  const baseUrl = `${origin}${basePath}`
 
-function sitemapEntry(
-  baseURL: string,
-  url: string,
-  lastModified: Date,
-  changeFrequency: string,
-  priority: number,
-): MetadataRoute.Sitemap[0] {
-  const addURL = url ? '/' + url : ''
-  const altLanguages: Record<string, any> = {}
-  const entry = {
-    url: baseURL + addURL,
-    lastModified: lastModified,
+  const languages = Object.fromEntries(
+    routing.locales.map((locale) => [
+      locale,
+      locale === routing.defaultLocale
+        ? `${baseUrl}/`
+        : `${baseUrl}/${locale}`,
+    ]),
+  )
+
+  return routing.locales.map((locale) => ({
+    url:
+      locale === routing.defaultLocale
+        ? `${baseUrl}/`
+        : `${baseUrl}/${locale}`,
+
     alternates: {
-      languages: altLanguages,
+      languages,
     },
-    priority: priority,
-  }
-  routing.locales.forEach((locale) => {
-    entry.alternates.languages[locale] = `${baseURL}/${locale}${addURL}`
-  })
-  return entry
-}
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [sitemapEntry(hrefBaseUrl, '', new Date(), 'weekly', 1)]
+  }))
 }

@@ -13,13 +13,10 @@ const mainSrvPath = !isDev ? '' : '/mrbc';
 const mainURL = mainSite + baseDomain;
 const webSiteLink = baseProtocol + '://' + mainURL + mainSrvPath ;
 
-const baseSite = !isDev ? 'bc.' : '';
 const baseSrvPath = !isDev ? '' : '/mrbc';
-const baseURL = baseSite + baseDomain;
-const baseFullURL = baseProtocol + '://' + baseURL + baseSrvPath ;
 
 const nextConfig = {
-  ...(isDev ? { output: 'standalone' } : { output: 'standalone' }),
+  output: 'standalone',
   basePath: baseSrvPath,
   skipTrailingSlashRedirect: true,  // вместо trailingSlash: true
   env: {
@@ -27,7 +24,6 @@ const nextConfig = {
     gtmId: !isDev ? 'GTM-TQ2WZFFW' : 'GTM-XXX',
     gaId: !isDev ? 'G-FMY13SC2L4' : 'G-TCQ8H0BX4G',
     baseSrvPath: baseSrvPath,
-    hrefBaseUrl: baseFullURL,
     webSiteLink: webSiteLink,
     ourName: 'MUYRICOCR',
     ourNameOut: 'Muy Rico Grupo',

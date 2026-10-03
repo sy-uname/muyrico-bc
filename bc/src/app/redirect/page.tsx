@@ -19,6 +19,10 @@ export async function generateMetadata() {
     metadataBase: await getCurrentOrigin(),
     title: t('metadata.title'),
     description: t('metadata.description'),
+  robots: {
+    index: false,
+    follow: true,
+},
   }
 }
 
