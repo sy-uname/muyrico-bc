@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+
 import { getCurrentOrigin } from '@helpers/getOrigin'
 
 export default async function robots(): Promise<MetadataRoute.Robots> {

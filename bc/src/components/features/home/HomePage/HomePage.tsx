@@ -39,7 +39,7 @@ import {
 export const HomePage = () => {
   const t = useTranslations('Home')
 
-  const isPromocionActive = getBlEnv("promocionActive")
+  const isPromocionActive = getBlEnv('promocionActive')
   const [promoEndDate, setPromoEndDate] = useState(new Date(Date.now() + 5000))
   const [promocionActive, setPromocionActive] = useState(isPromocionActive)
 

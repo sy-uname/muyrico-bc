@@ -11,17 +11,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const languages = Object.fromEntries(
     routing.locales.map((locale) => [
       locale,
-      locale === routing.defaultLocale
-        ? `${baseUrl}/`
-        : `${baseUrl}/${locale}`,
+      locale === routing.defaultLocale ? `${baseUrl}/` : `${baseUrl}/${locale}`,
     ]),
   )
 
   return routing.locales.map((locale) => ({
-    url:
-      locale === routing.defaultLocale
-        ? `${baseUrl}/`
-        : `${baseUrl}/${locale}`,
+    url: locale === routing.defaultLocale ? `${baseUrl}/` : `${baseUrl}/${locale}`,
 
     alternates: {
       languages,

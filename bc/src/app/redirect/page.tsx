@@ -1,12 +1,13 @@
 export const dynamic = 'force-dynamic'
+
 import { Suspense } from 'react'
-import { headers } from 'next/headers'
 import { getTranslations } from 'next-intl/server'
+import { headers } from 'next/headers'
 
 import { RedirectPage } from '@features'
-import { routing } from '@/i18n/routing'
-import { postData } from '@/app/actions'
 import { getCurrentOrigin } from '@helpers/getOrigin'
+import { postData } from '@/app/actions'
+import { routing } from '@/i18n/routing'
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
@@ -19,10 +20,10 @@ export async function generateMetadata() {
     metadataBase: await getCurrentOrigin(),
     title: t('metadata.title'),
     description: t('metadata.description'),
-  robots: {
-    index: false,
-    follow: true,
-},
+    robots: {
+      index: false,
+      follow: true,
+    },
   }
 }
 
