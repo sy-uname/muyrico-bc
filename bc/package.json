@@ -10,7 +10,6 @@
     "start": "PORT=3014 DEPLOY=false node .next/standalone/server.js",
     "start_deploy": "PORT=3014 DEPLOY=true node .next/standalone/server.js",
     "lint": "next lint",
-    "g": "plop",
     "pp": "npx prettier src/ --check --parser=\"typescript\" --ignore-path=.prettierignore",
     "ppf": "npx prettier --write --parser=\"typescript\""
   },
@@ -31,9 +30,11 @@
   "devDependencies": {
     "eslint": "8.57.1",
     "eslint-config-next": "^15.5.27",
-    "inquirer-fuzzy-path": "^2.3.0",
-    "plop": "^3.1.2",
     "prettier": "^3.3.3",
     "prettier-plugin-sort-react-imports": "^0.5.0"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "@swc/core@1.16.13": true
   }
 }
