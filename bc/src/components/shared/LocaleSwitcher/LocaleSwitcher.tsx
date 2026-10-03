@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 import es from '@assets/es.svg'
@@ -12,13 +12,19 @@ import { LocaleButton, LocaleSwitcherContainer } from './LocaleSwitcher.elements
 
 export const LocaleSwitcher = () => {
   const currentLocale = useLocale()
+  const t = useTranslations('LocaleSwitcher')
 
   const localeFlagsMap: Record<string, string> = { es, en, ru }
 
   return (
     <LocaleSwitcherContainer>
       {routing.locales.map((locale) => (
-        <LocaleButton locale={locale} href="/" key={locale} $active={currentLocale === locale}>
+        <LocaleButton
+          locale={locale}
+          href="/"
+          key={locale}
+          $active={currentLocale === locale}
+          aria-label={t(locale)}>
           <Image src={localeFlagsMap[locale]} width={26} height={26} alt="" />
         </LocaleButton>
       ))}

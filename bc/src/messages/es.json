@@ -8,7 +8,12 @@
       "main-page": "Volver a la página principal"
     }
   },
+  "LocaleSwitcher": {
+    "es": "Cambiar a español",
+    "ru": "Cambiar a ruso"
+  },
   "Home": {
+    "website-link-label": "Visitar el sitio web de MUY RICO GRUPO",
     "metadata": {
       "title": "MUY RICO GRUPO | Repostería, comida preparada y alimentación en Costa Rica",
       "description": "MUY RICO GRUPO ofrece comida casera para todos los días y ocasiones especiales: repostería y postres, comidas preparadas y productos listos para cocinar, alimentación balanceada y deportiva, menús individuales y familiares, además de preparación de alimentos para fiestas, reuniones y eventos."

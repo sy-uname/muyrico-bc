@@ -84,7 +84,7 @@ export const HomePage = () => {
 
   return (
     <HomePageContainer>
-      <LogoContainer href={webSiteLink} target="_blank">
+      <LogoContainer href={webSiteLink} target="_blank" aria-label={t('website-link-label')}>
         <ResponsiveImage src={logo.src} />
       </LogoContainer>
 
