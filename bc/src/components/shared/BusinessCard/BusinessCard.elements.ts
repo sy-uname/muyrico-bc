@@ -95,7 +95,7 @@ export const actionLinkStyles = css`
   }
 `
 
-export const MessageDescription = styled.h3`
+export const MessageDescription = styled.p`
   font-family: Nunito, sans-serif;
   font-size: 16px;
   font-weight: 500;

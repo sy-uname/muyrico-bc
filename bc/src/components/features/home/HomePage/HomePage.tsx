@@ -27,6 +27,7 @@ import {
   LogoContainer,
   ButtonsSection,
   OfferContainer,
+  HomePageHeading,
   ButtonsContainer,
   ContentContainer,
   HomePageContainer,
@@ -83,7 +84,8 @@ export const HomePage = () => {
   }
 
   return (
-    <HomePageContainer>
+    <HomePageContainer as="main">
+      <HomePageHeading>{process.env.ourNameOut}</HomePageHeading>
       <LogoContainer href={webSiteLink} target="_blank" aria-label={t('website-link-label')}>
         <ResponsiveImage src={logo.src} />
       </LogoContainer>
@@ -96,7 +98,7 @@ export const HomePage = () => {
         <ButtonsContainer>
           {promocionActive && (
             <ButtonsSection>
-              <ButtonsSectionTitile>🔥 {t('promo.title')} 🔥</ButtonsSectionTitile>
+              <ButtonsSectionTitile as="h2">🔥 {t('promo.title')} 🔥</ButtonsSectionTitile>
 
               <OfferContainer>
                 <OfferTitle>{t('promo.text')}</OfferTitle>
@@ -113,7 +115,7 @@ export const HomePage = () => {
           )}
 
           <ButtonsSection>
-            <ButtonsSectionTitile>{t('location-contacts.title')}</ButtonsSectionTitile>
+            <ButtonsSectionTitile as="h2">{t('location-contacts.title')}</ButtonsSectionTitile>
             <ButtonsSectionButtonsContainer>
               <LinkButton href={wazeLink} target="_blank">
                 <Image src={waze.src} width={48} height={48} alt="" />
@@ -162,7 +164,7 @@ export const HomePage = () => {
           </ButtonsSection>
 **/}
           <ButtonsSection>
-            <ButtonsSectionTitile>{t('social-networks.title')}</ButtonsSectionTitile>
+            <ButtonsSectionTitile as="h2">{t('social-networks.title')}</ButtonsSectionTitile>
             <ButtonsSectionButtonsContainer>
               {instagramLink && (
                 <LinkButton href={instagramLink} target="_blank">

@@ -2,34 +2,37 @@
 
 ## Current project state
 
-- MUY RICO bilingual business-card website using Next.js 14 App Router, React 18, TypeScript, next-intl, and styled-components.
+- MUY RICO bilingual business-card website using Next.js 15.5.27 App Router, React 19.3.0, next-intl 4.14.9, TypeScript, styled-components, npm, and standalone output.
 - Spanish and Russian homepages provide contact, location, and social links. Promotions are disabled.
 - QR landing page tracks only sources listed in server-runtime `SCAN_SOURCES`; accepted identifiers are trimmed/lowercased. Tracking uses runtime `SCAN_BACKEND_URL` and the existing configurable timeout (3000ms default); the ten-second client navigation timer is unchanged. Runtime settings are documented in `docs/scan-tracking-configuration.md`.
-- Repository audits are saved in `docs/CODEX_AUDIT.md` and `docs/scan-main-ui-analysis.md`. Home, Redirect, and 404 now share neutral styled-components presentation primitives. Lint, TypeScript, and standalone build passed; browser behavior remains to be verified. No tests or test script were found.
+- Current frontend backlog is recorded in `docs/FRONTEND_AUDIT.md`; older repository/UI/scan audits remain historical references. Home, Redirect, and 404 share presentation primitives. Frontend findings #1 (accessible link names) and #2 (heading/landmark semantics) are implemented; lint, TypeScript, and build passed. Manual browser verification is pending.
 
 ## Confirmed known issues
 
-- `postinstall` invokes Husky, but Husky is not declared or installed.
-- Both npm and Yarn lockfiles exist; the styled-components v5 resolution conflicts with the v6 dependency declaration.
-- Localized routes nest duplicate `MainProvider` instances; each provider creates a new QueryClient on every render.
-- Scan tracking remains best-effort direct `/redirect` → `postData` during server rendering. Skips/failures still return `null`; configured source membership validation is implemented; duplicate/bot controls remain unchanged. Timeout/response failures do not prove the backend did not commit a write. Backend controls and actual duplicate rates are unverified.
-- `/api/scans` has no repository application callers and appears legacy; external usage must be checked before removal.
-- The earlier homepage `/es` canonical finding is resolved in current source; sitemap locale/origin policy still needs a separate review.
-- nginx and systemd deployment configuration is absent from this repository.
+- Shared CTA white-on-orange contrast is approximately 3.72:1; finding #3 remains open.
+- Logo rendering discards intrinsic dimensions and uses a viewport-wide size hint despite its 190px cap; the background asset is large.
+- Locale/message typing lacks effective next-intl AppConfig augmentation; invalid locale/message-key probes pass.
+- Disabled promotion code retains a dynamic client environment lookup, a month-end deadline defect, and unencoded WhatsApp query text. Correctness fixes are needed before reactivation.
+- Legacy UI/types/exports and unnecessary wrappers remain as documented in the frontend audit. 404 document composition is a runtime-verification candidate, not a confirmed browser defect.
+- Scan tracking remains best-effort: timeouts do not prove a backend write failed. Duplicate/bot controls and backend behavior are outside the completed source-validation work.
 
 ## Work currently in progress
 
-- UI implementation and automated verification are complete. Browser/manual verification of Home, Redirect, and 404 is pending.
+- No source implementation is currently in progress. Manual accessibility-tree, keyboard, and visual-parity checks for completed findings #1/#2 are pending.
 
 ## Recommended next tasks
 
-1. Verify clean installation and deployment reproducibility, including package-manager choice, Husky, build/start modes, and archive contents.
-2. Verify Home appearance against its previous layout, Redirect/404 mobile layout and initial styles, ten-second scan navigation and home actions, locale/base-path routing, and multiple request hosts. Review provider/document architecture separately.
-3. Verify active SCAN_SOURCES and existing backend URL/timeout settings in the running server environment, production log visibility, and unchanged fail-open navigation. Confirm duplicate/bot counting policy and legacy API consumers before proposing further controls or route removal.
-4. Verify canonical URLs, sitemap entries, and reverse-proxy forwarded headers.
-5. Review mobile accessibility and promotion behavior; run build and runtime checks when authorized.
+1. Verify localized link names, Home main/h1/h2 structure, Redirect/404 paragraphs, keyboard navigation, and unchanged appearance in both locales. Use an isolated environment for scan-flow checks.
+2. Address CTA contrast as a separate approved task; then locale/message typing and logo sizing/background optimization independently.
+3. Follow the remaining execution order in `docs/FRONTEND_AUDIT.md`: small legacy cleanup, promotion correctness before enabling, measured client-composition simplification, and targeted 404 verification.
+4. Verify runtime scan configuration/logging and browser behavior without generating real statistics solely for testing. Do not reopen completed migration/security/deployment tasks without new concrete evidence.
 
 ## Recently completed
+
+- Fixed frontend audit #1: localized aria-label values on language-switcher and linked Home logo; decorative images retain empty alt text. Changed only the two components and Spanish/Russian message files.
+- Fixed frontend audit #2: Home outer div now renders as main, an offscreen h1 reuses the existing localized metadata title, active section titles render as h2, and shared Redirect/404 descriptions render as p. Visible text, styles, routing, translations, and CTA contrast are unchanged.
+- For both accessibility tasks, `npm run lint`, `npx tsc --noEmit`, and `npm run build` passed; semantic-task whitespace checks and accessible-name message checks passed. Manual browser/accessibility-tree verification has not been performed.
+- Current baseline includes completed Next.js 15 / React 19 / next-intl 4 migrations, styled-components and Link cleanup, React Query/demo removal, duplicate-provider removal, dependency/install-script review, scan investigation, SEO review, and deployment/script cleanup. Superseded historical known-issue entries were removed from the active backlog; these closed tasks are not reopened.
 
 - Implemented runtime SCAN_SOURCES whitelist membership in `postData`: comma-separated items are trimmed/lowercased, empty items ignored, and incoming values normalized identically. Accepted POSTs carry the normalized source; unknown/removed sources log skipped/unknown_source and return null without calling the backend. Missing/empty lists track nothing and are not configuration errors. Existing empty/exact-default skips remain unchanged.
 - Required source examples and additional runtime-list, empty-item, normalized payload, device, fail-open, and timeout checks passed with fully mocked fetch (no network/live scans). `npm run lint`, `npx tsc --noEmit`, and `npm run build` passed. Backend URL/timeout, UI, navigation, locales, analytics, retries, and deployment were untouched.
@@ -54,3 +57,5 @@
 - Scan backend configuration is server runtime only; the default remains the existing localhost service. The three-second budget bounds the awaited network/body work without changing source semantics or adding retries. Logs describe transport/response outcomes, not guaranteed database persistence.
 
 - Active scan-source membership is the validation contract: SCAN_SOURCES is read at each eligible helper call, compared case-insensitively after trimming, and missing configuration means an empty set. Removed-source QR URLs continue rendering normally without recording statistics; no extra format restrictions are imposed.
+
+- Accessibility fixes use existing localized messages and styled-components polymorphism. Home’s page heading is visually hidden to preserve layout; decorative images remain decorative when their parent link or visible text supplies the name.
